@@ -261,7 +261,8 @@
         "wires": [
             [
                 "a7477e79.67292",
-                "972c6994.0e0758"
+                "972c6994.0e0758",
+                "155e285a.9c00a8"
             ]
         ]
     },
@@ -269,32 +270,32 @@
         "id": "a7477e79.67292",
         "type": "switch",
         "z": "519a1888.4e9508",
-        "name": "if flux changes to sunset",
-        "property": "req.query.ct",
+        "name": "if sunrise or sunset",
+        "property": "payload.state",
         "propertyType": "msg",
         "rules": [
             {
-                "t": "lte",
-                "v": "3400",
+                "t": "eq",
+                "v": "sunrise",
                 "vt": "str"
             },
             {
-                "t": "gt",
-                "v": "3400",
+                "t": "eq",
+                "v": "sunset",
                 "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 450,
+        "x": 430,
         "y": 420,
         "wires": [
             [
-                "a3d09d21.2d9d8"
+                "fd8e4dae.97c36"
             ],
             [
-                "b670fcdd.0445d"
+                "a3d09d21.2d9d8"
             ]
         ]
     },
@@ -305,8 +306,8 @@
         "name": "Corner Lamp Relax",
         "bridge": "4f33b64d.010e28",
         "sceneid": "MTX4sFiDFXoGkh2",
-        "x": 910,
-        "y": 400,
+        "x": 770,
+        "y": 440,
         "wires": [
             []
         ]
@@ -320,40 +321,51 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "req.query.ct",
+        "complete": "payload",
         "targetType": "msg",
-        "x": 420,
-        "y": 480,
+        "x": 410,
+        "y": 500,
         "wires": []
     },
     {
-        "id": "b670fcdd.0445d",
-        "type": "function",
+        "id": "155e285a.9c00a8",
+        "type": "http response",
         "z": "519a1888.4e9508",
-        "name": "turn off corner lamp",
-        "func": "msg.payload = false;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 710,
-        "y": 440,
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 400,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "145855a9.3ba77a",
+        "type": "hue-group",
+        "z": "519a1888.4e9508",
+        "name": "Living Room Corner",
+        "bridge": "4f33b64d.010e28",
+        "groupid": "7",
+        "colornamer": true,
+        "x": 780,
+        "y": 400,
         "wires": [
-            [
-                "9bfa5f28.cdeb1"
-            ]
+            []
         ]
     },
     {
-        "id": "9bfa5f28.cdeb1",
-        "type": "hue-light",
+        "id": "fd8e4dae.97c36",
+        "type": "function",
         "z": "519a1888.4e9508",
-        "name": "Corner Lamp",
-        "bridge": "4f33b64d.010e28",
-        "lightid": "1",
-        "colornamer": true,
-        "x": 890,
-        "y": 440,
+        "name": "turn off",
+        "func": "msg.payload = false;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 610,
+        "y": 400,
         "wires": [
-            []
+            [
+                "145855a9.3ba77a"
+            ]
         ]
     }
 ]
