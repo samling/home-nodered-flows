@@ -253,7 +253,7 @@
         "repair": false,
         "outputs": 2,
         "x": 660,
-        "y": 80,
+        "y": 60,
         "wires": [
             [
                 "95fa062c.ea3348"
