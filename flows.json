@@ -35,6 +35,128 @@
         "interval": "3000"
     },
     {
+        "id": "ecdb78b3.f2dd98",
+        "type": "amazon config",
+        "z": "",
+        "name": "nodered-iam-sns",
+        "region": "us-east-1",
+        "proxyRequired": false,
+        "proxy": ""
+    },
+    {
+        "id": "eb5ecdf7.3bc9",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "abb7fff0.53834",
+        "type": "chatbot-discord-node",
+        "z": "",
+        "botname": "pugbot",
+        "usernames": "",
+        "clientId": "551718676303183882",
+        "store": "",
+        "log": "",
+        "debug": true
+    },
+    {
+        "id": "e905782d.2ba0c8",
+        "type": "discord-token",
+        "z": "",
+        "name": "pugbot"
+    },
+    {
         "id": "aaf1b815.fd8698",
         "type": "inject",
         "z": "519a1888.4e9508",
@@ -65,8 +187,8 @@
         "timer": "",
         "oldrc": false,
         "name": "check connected devices",
-        "x": 610,
-        "y": 80,
+        "x": 430,
+        "y": 140,
         "wires": [
             [
                 "af18bea3.c660f"
@@ -104,8 +226,8 @@
         "func": "all_devices = msg.payload.split('\\n');\nvar cell_phones = [\"44:91:60:cb:45:b0\",\"7c:a1:ae:e9:cb:07\",\"58:6b:14:8d:98:ac\"] // S9+, Work iPhone, Alli's iPhone\nmsg.present = cell_phones.some(c => all_devices.includes(c)); // See if all_devices contains at least one of the MAC addresses in cell_phones\nmsg.today = new Date().getTime() / 1000;\nmsg.today_formatted = new Date();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 850,
-        "y": 80,
+        "x": 430,
+        "y": 200,
         "wires": [
             [
                 "b18ae5f1.410268"
@@ -130,7 +252,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1060,
+        "x": 660,
         "y": 80,
         "wires": [
             [],
@@ -180,8 +302,8 @@
         "bridge": "4f33b64d.010e28",
         "groupid": "2",
         "colornamer": true,
-        "x": 1440,
-        "y": 160,
+        "x": 1080,
+        "y": 180,
         "wires": [
             []
         ]
@@ -194,8 +316,8 @@
         "bridge": "4f33b64d.010e28",
         "groupid": "1",
         "colornamer": true,
-        "x": 1390,
-        "y": 340,
+        "x": 1030,
+        "y": 360,
         "wires": [
             []
         ]
@@ -208,8 +330,8 @@
         "bridge": "4f33b64d.010e28",
         "groupid": "7",
         "colornamer": true,
-        "x": 1440,
-        "y": 220,
+        "x": 1080,
+        "y": 240,
         "wires": [
             []
         ]
@@ -222,8 +344,8 @@
         "bridge": "4f33b64d.010e28",
         "groupid": "6",
         "colornamer": true,
-        "x": 1420,
-        "y": 280,
+        "x": 1060,
+        "y": 300,
         "wires": [
             []
         ]
@@ -233,17 +355,18 @@
         "type": "function",
         "z": "519a1888.4e9508",
         "name": "turn off lights",
-        "func": "msg.payload = false;\nreturn msg;",
+        "func": "msg.payload = false;\nmsg.chat = \"test\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1230,
-        "y": 160,
+        "x": 850,
+        "y": 120,
         "wires": [
             [
                 "c2bac4e4.3834e8",
                 "f8617a4d.3c0da8",
                 "7cc4e5d2.baa48c",
-                "cf1bb5e2.c671b8"
+                "cf1bb5e2.c671b8",
+                "42293f77.ace92"
             ]
         ]
     },
@@ -292,10 +415,12 @@
         "y": 420,
         "wires": [
             [
-                "fd8e4dae.97c36"
+                "fd8e4dae.97c36",
+                "6b8ff375.af84ec"
             ],
             [
-                "a3d09d21.2d9d8"
+                "a3d09d21.2d9d8",
+                "bc390adb.b6a6c8"
             ]
         ]
     },
@@ -303,11 +428,11 @@
         "id": "a3d09d21.2d9d8",
         "type": "hue-scene",
         "z": "519a1888.4e9508",
-        "name": "Corner Lamp Relax",
+        "name": "Turn on living room corner",
         "bridge": "4f33b64d.010e28",
         "sceneid": "MTX4sFiDFXoGkh2",
-        "x": 770,
-        "y": 440,
+        "x": 670,
+        "y": 480,
         "wires": [
             []
         ]
@@ -365,6 +490,65 @@
         "wires": [
             [
                 "145855a9.3ba77a"
+            ]
+        ]
+    },
+    {
+        "id": "754e8ab3.8e9944",
+        "type": "discord-send-messages",
+        "z": "519a1888.4e9508",
+        "name": "",
+        "channel": "pugbot_testing",
+        "token": "e905782d.2ba0c8",
+        "x": 1360,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "42293f77.ace92",
+        "type": "function",
+        "z": "519a1888.4e9508",
+        "name": "Send Discord message",
+        "func": "msg.payload = \"@samling Lights turned off (no one at home)\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1090,
+        "y": 120,
+        "wires": [
+            [
+                "754e8ab3.8e9944"
+            ]
+        ]
+    },
+    {
+        "id": "6b8ff375.af84ec",
+        "type": "function",
+        "z": "519a1888.4e9508",
+        "name": "Send notification",
+        "func": "msg.payload = \"@samling Corner light turned off (sunrise)\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 360,
+        "wires": [
+            [
+                "754e8ab3.8e9944"
+            ]
+        ]
+    },
+    {
+        "id": "bc390adb.b6a6c8",
+        "type": "function",
+        "z": "519a1888.4e9508",
+        "name": "Send notification",
+        "func": "msg.payload = \"@samling Corner light turned on (sunset)\";",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 520,
+        "wires": [
+            [
+                "754e8ab3.8e9944"
             ]
         ]
     }
